@@ -30,6 +30,7 @@
 - Show toast message on save of profile
 - new page - see all my conenctions
 - new page - See all my connection request
+- Feature to accept/reject connection request
 
 
 
