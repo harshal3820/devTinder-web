@@ -31,6 +31,8 @@
 - new page - see all my conenctions
 - new page - See all my connection request
 - Feature to accept/reject connection request
+- signup new user
+- E2E testing
 
 
 
