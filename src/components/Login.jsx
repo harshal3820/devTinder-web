@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
+    const [error,setError] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -18,10 +19,10 @@ const login = () => {
                 password,
             }, { withCredentials: true });
             dispatch(addUser(res.data));
-            navigate("/");
+            return navigate("/");
 
         } catch (err) {
-            console.log("Login failed:", err);
+            setError(err?.response?.data || "Something went wrong");
         }
 
     }
@@ -47,6 +48,7 @@ const login = () => {
 
                         </label>
                     </div>
+                    <p className="text-red-500">{error}</p>
                     <div className="justify-center card-actions m-2">
                         <button className="btn btn-primary" onClick={handleLogin}>Login</button>
                     </div>
