@@ -26,6 +26,9 @@
 - Logout feature
 - Get the feed and add the feed in the store
 - Build the user card on feed
+- Edit profile picture
+- Show toast message on save of profile
+- see all my conenctions
 
 
 
