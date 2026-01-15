@@ -10,18 +10,19 @@ const login = () => {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleLogin = async () => {
-       try{
-         const res = await axios.post(BASE_URL +"/login",{
-            emailId,
-            password,
-        },{ withCredentials: true });
-        dispatch(addUser(res.data));
-        navigate("/");
 
-       } catch(err) {
-        console.log("Login failed:", err);
-       }
+    const handleLogin = async () => {
+        try {
+            const res = await axios.post(BASE_URL + "/login", {
+                emailId,
+                password,
+            }, { withCredentials: true });
+            dispatch(addUser(res.data));
+            navigate("/");
+
+        } catch (err) {
+            console.log("Login failed:", err);
+        }
 
     }
     return (
@@ -34,7 +35,7 @@ const login = () => {
                             <div className="label">
                                 <span className="label-text">Email ID</span>
                             </div>
-                            <input type="text" value={emailId} className="input input-bordered w-full max-w-xs mb-4" onChange={(e) => setEmailId(e.target.value)}/>
+                            <input type="text" value={emailId} className="input input-bordered w-full max-w-xs mb-4" onChange={(e) => setEmailId(e.target.value)} />
 
                         </label>
 
@@ -42,7 +43,7 @@ const login = () => {
                             <div className="label">
                                 <span className="label-text">Password</span>
                             </div>
-                            <input type="password" value={password} className="input input-bordered w-full max-w-xs mb-4" onChange={(e) => setPassword(e.target.value)}/>
+                            <input type="password" value={password} className="input input-bordered w-full max-w-xs mb-4" onChange={(e) => setPassword(e.target.value)} />
 
                         </label>
                     </div>
