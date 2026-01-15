@@ -10,14 +10,14 @@ const NavBar = () => {
   const user = useSelector(store => store.user);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const handleLogout = async() => {
-       try{
-        await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
-        dispatch(removeUser());
-        return Navigate("/login");
-       } catch (err) {
-        console.error(err);
-       }
+  const handleLogout = async () => {
+    try {
+      await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      dispatch(removeUser());
+      return Navigate("/login");
+    } catch (err) {
+      console.error(err);
+    }
   }
   return (
     <div className="navbar bg-base-300 shadow-sm">
@@ -44,6 +44,9 @@ const NavBar = () => {
               </Link>
             </li>
             <li><Link to="/connections">Connections</Link></li>
+            <li>
+              <Link to="/requests">Requests</Link>
+            </li>
             <li><a onClick={handleLogout}>Logout</a></li>
           </ul>
         </div>
