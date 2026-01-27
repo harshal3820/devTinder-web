@@ -29,8 +29,11 @@ const Connections = () => {
   if (connections.length === 0) return <h1> No Connections Found</h1>;
 
   return (
-    <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Connections</h1>
+    <div className="px-4 pt-8 md:pt-14 lg:pt-20 pb-10 text-center">
+
+      <h1 className="font-bold text-white text-3xl mb-8">
+        Connections
+      </h1>
 
       {connections.map((connection) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
@@ -39,25 +42,42 @@ const Connections = () => {
         return (
           <div
             key={_id}
-            className="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto"
+            className="
+            bg-base-300 rounded-lg shadow-md
+            w-full md:w-1/2
+            mx-auto
+            p-4
+            mb-6
+            flex flex-col md:flex-row
+            items-center md:items-start
+            gap-4
+          "
           >
-            <div>
-              <img
-                alt="photo"
-                className="w-20 h-20 rounded-full object-cover"
-                src={photoUrl}
-              />
-            </div>
-            <div className="text-left mx-4 ">
+            <img
+              alt="photo"
+              className="w-20 h-20 rounded-full object-cover"
+              src={photoUrl}
+            />
+
+            <div className="text-center md:text-left flex-1">
               <h2 className="font-bold text-xl">
-                {firstName + " " + lastName}
+                {firstName} {lastName}
               </h2>
-              {age && gender && <p>{age + ", " + gender}</p>}
-              <p>{about}</p>
+              {age && gender && (
+                <p className="text-sm opacity-80">
+                  {age}, {gender}
+                </p>
+              )}
+              <p className="text-sm mt-1">{about}</p>
             </div>
-            <Link to={"/chat/" + _id}>
-              <button className="btn btn-primary">Chat</button>
-            </Link>
+
+            <div className="w-full md:w-auto flex justify-center md:justify-end">
+              <Link to={"/chat/" + _id}>
+                <button className="btn btn-primary btn-sm md:btn-md">
+                  Chat
+                </button>
+              </Link>
+            </div>
           </div>
         );
       })}

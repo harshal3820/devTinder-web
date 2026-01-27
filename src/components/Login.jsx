@@ -114,14 +114,19 @@ const Login = () => {
                         </button>
                     </div>
 
-                    <p
-                        className="m-auto cursor-pointer py-2"
-                        onClick={() => setIsLoginForm((value) => !value)}
-                    >
-                        {isLoginForm
-                            ? "New User? Signup Here"
-                            : "Existing User? Login Here"}
-                    </p>
+                    <div className="text-center mt-4">
+                        <span className="text-sm">
+                            {isLoginForm ? "New user? " : "Already have an account? "}
+                        </span>
+                        <button
+                            type="button"
+                            className="text-primary font-semibold hover:underline"
+                            onClick={() => setIsLoginForm((value) => !value)}
+                        >
+                            {isLoginForm ? "Create an account" : "Login here"}
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>

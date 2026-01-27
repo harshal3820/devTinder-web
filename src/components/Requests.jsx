@@ -39,8 +39,10 @@ const Requests = () => {
         return <h1 className="flex justify-center my-10"> No Requests Found</h1>;
 
     return (
-        <div className="text-center my-10">
-            <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
+        <div className="px-4 pt-8 md:pt-14 lg:pt-20 pb-10 text-center">
+            <h1 className="font-bold text-white text-3xl mb-8">
+                Connection Requests
+            </h1>
 
             {requests.map((request) => {
                 const { _id, firstName, lastName, photoUrl, age, gender, about } =
@@ -48,32 +50,47 @@ const Requests = () => {
 
                 return (
                     <div
-                        key={_id}
-                        className=" flex justify-between items-center m-4 p-4 rounded-lg bg-base-300  mx-auto"
+                        key={request._id}
+                        className="
+            bg-base-300 rounded-lg shadow-md
+            w-full md:w-1/2
+            mx-auto
+            p-4 mb-6
+            flex flex-col md:flex-row
+            items-center md:items-start
+            gap-4
+          "
                     >
-                        <div>
-                            <img
-                                alt="photo"
-                                className="w-20 h-20 rounded-full"
-                                src={photoUrl}
-                            />
-                        </div>
-                        <div className="text-left mx-4 ">
+                        {/* Avatar */}
+                        <img
+                            alt="photo"
+                            className="w-20 h-20 rounded-full object-cover"
+                            src={photoUrl}
+                        />
+
+                        {/* Info */}
+                        <div className="text-center md:text-left flex-1">
                             <h2 className="font-bold text-xl">
-                                {firstName + " " + lastName}
+                                {firstName} {lastName}
                             </h2>
-                            {age && gender && <p>{age + ", " + gender}</p>}
-                            <p>{about}</p>
+                            {age && gender && (
+                                <p className="text-sm opacity-80">
+                                    {age}, {gender}
+                                </p>
+                            )}
+                            <p className="text-sm mt-1">{about}</p>
                         </div>
-                        <div>
+
+                        {/* Actions */}
+                        <div className="flex gap-3 w-full md:w-auto justify-center md:justify-end">
                             <button
-                                className="btn btn-primary mx-2"
+                                className="btn btn-primary btn-sm md:btn-md"
                                 onClick={() => reviewRequest("rejected", request._id)}
                             >
                                 Reject
                             </button>
                             <button
-                                className="btn btn-secondary mx-2"
+                                className="btn btn-secondary btn-sm md:btn-md"
                                 onClick={() => reviewRequest("accepted", request._id)}
                             >
                                 Accept
@@ -84,5 +101,6 @@ const Requests = () => {
             })}
         </div>
     );
+
 };
 export default Requests;
